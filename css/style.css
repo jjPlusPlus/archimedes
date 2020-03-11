@@ -1,0 +1,31 @@
+* {
+  margin:0;
+  padding:0;
+}
+
+body {
+  background-color: #000;
+}
+
+@font-face {
+  font-family: JAP;
+  src: url(electroharmonix.ttf);
+}
+
+@keyframes rainChange
+{
+  from {color: #75EBFF;}
+  to {color: #000831;}
+}
+
+@-webkit-keyframes rainChange
+{
+  0%   {color: #AAF3FF;}
+  50%  {color: #0084FF;}
+  100% {color: #000831;}
+}
+
+.rainDrops {
+  animation: rainChange 3s;
+  -webkit-animation: rainChange 3s;
+}

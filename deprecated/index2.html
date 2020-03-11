@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+
+		<title>Spiral Algorithm</title>
+
+		<style type="text/css">
+			@font-face
+			{
+				font-family: JAP;
+				src: url(electro.ttf);
+			}
+			* {
+				margin:0;
+				padding:0;
+			}
+			body {
+				background-color: #000;
+			}
+			@keyframes rainChange
+			{
+				from {color: #006CFF;}
+				to {color: #00007C;}
+			}
+
+			@-webkit-keyframes rainChange
+			{
+				from {color: #2CADFF;}
+				to {color: #000831;}
+			}
+
+			.rainDrops {
+				animation: rainChange 5s;
+				-webkit-animation: rainChange 5s; /* Safari and Chrome */
+			}
+		</style>
+
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript">
+
+			var path;
+			var halfX = null;
+			var halfY = null;
+			var paperCanvas = null;
+			var thisContainer;
+			var uhRay = [];
+			var charRay = 'abcdefghijklmnopqrstuvwxyz';
+			charRay = charRay.split('');
+
+			function drawBasic() {
+				console.log('drawBasic was called');
+				//get the canvas element: get it's width and height
+				//find the center by dividing the width and height by half
+				var paperWidth = window.innerWidth;
+				var paperHeight = window.innerHeight;
+				halfX = paperWidth/2;
+				halfY = paperHeight/2;
+
+				//start a new loop with var J that runs 720 times
+				//setting j < ___ in the loop declaration decides how many iterations to run it
+				//setting angle to ___ * j decides how often to create a new point in the circle
+				for (var j=0 ; j<3000 ; j++) {
+					//keeps the angle tight
+					angle = 0.1 * j;
+					//
+					x=(5+2.5*angle)*Math.cos(angle);
+					y=(5+2.5*angle)*Math.sin(angle);
+					//x = centerx + (a + b * angle) * Math.cos(angle);
+       				//y = centery + (a + b * angle) * Math.sin(angle);
+
+					//rendr points
+
+
+					//lines
+					if (j % 2 === 0 && j !== 0) {
+						var container = document.createElement('p');
+						container.style.position = 'absolute';
+						container.style.color = '#000831';
+						container.style.fontFamily = 'JAP';
+						container.style.left = x + halfX + 'px';
+						container.style.top = y + halfY + 'px';
+						container.innerHTML = charRay[Math.floor(Math.random() * charRay.length)];
+						container.id = j;
+						uhRay.push(container.id);
+						$('body').append(container);
+					}
+				}
+			}
+
+			var callAnim = function() {
+				setInterval(anim,50);
+			}
+
+			var curRainIndex = -1;
+			var anim = function() {
+				++curRainIndex;
+				if (curRainIndex >= uhRay.length) {
+					curRainIndex = 0;
+				}
+				toggleAnimation(uhRay[curRainIndex]);
+			}
+
+			function toggleAnimation(indexNum) {
+				elemID = '#' + indexNum;
+				$(elemID).toggleClass("rainDrops");
+			}
+
+
+			$(document).ready(function() {
+				drawBasic();
+				console.log('document Ready');
+				setInterval(callAnim, 5000);
+
+			});
+		</script>
+	</head>
+
+	<body>
+
+
+	</body>
+</html>
