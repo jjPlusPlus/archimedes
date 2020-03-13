@@ -21,7 +21,7 @@
 			<div>
 				<label>Coils</label>
 				<div>
-					<input type="range" min="5" max="50" value="30" step="5" list="coilTicks" onChange="sliderChange(event, 'coils')"/>
+					<input type="range" min="5" max="50" value="30" step="5" list="coilTicks" onChange="sliderChange(event, 'numCoils')"/>
 					<datalist id="coilTicks">
 					  <option value="5" label="5"></option>
 					  <option value="10"></option>
@@ -60,7 +60,7 @@
 			<div>
 				<label>Animation Groups</label>
 				<div>
-					<input type="range" min="1" max="50" value="30" list="animGroupTicks" onChange="sliderChange(event, 'animationGroups')"/>
+					<input type="range" min="1" max="50" value="30" list="animGroupTicks" onChange="sliderChange(event, 'numGroups')"/>
 					<datalist id="animGroupTicks">
 					  <option value="1" label="1"></option>
 					  <option value="10"></option>
