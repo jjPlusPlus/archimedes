@@ -29,3 +29,12 @@ body {
   animation: rainChange 3s;
   -webkit-animation: rainChange 3s;
 }
+
+.control-panel {
+  background: rgba(255,255,255,0.8);
+  padding: 15px;
+  position: fixed;
+  z-index: 2;
+  left: 10px;
+  top: 10px;
+}
