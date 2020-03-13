@@ -17,7 +17,6 @@
 
 	<body>
 		<div id="controls" class="control-panel">
-			<!-- Slider for coils between 5 and 50-->
 			<div>
 				<label>Coils</label>
 				<div>
@@ -36,8 +35,6 @@
 					</datalist>
 				</div>
 			</div>
-
-		<!-- Slider for chord between 5 and 50-->
 			<div>
 				<label>Chord</label>
 				<div>
@@ -54,9 +51,8 @@
 					  <option value="45"></option>
 					  <option value="50" label="50"></option>
 					</datalist>
-				<div>
+				</div>
 			</div>
-			<!-- Slider for animation groups between 1 and 50-->
 			<div>
 				<label>Animation Groups</label>
 				<div>
@@ -71,7 +67,6 @@
 					</datalist>
 				</div>
 			</div>
-			<!-- Slider for iterations between 5 and 100-->
 			<div>
 				<label>Iterations</label>
 				<div>
@@ -92,45 +87,46 @@
 				</div>
 			</div>
 		</div>
+	</div>
 
-		<div id="spiral">
-			<!-- Spiral Elements will be dynamically inserted and removed from here -->
-		</div>
+	<div id="spiral">
+		<!-- Spiral Elements will be dynamically inserted and removed from here -->
+	</div>
 
-		<script type="text/javascript">
-			document.addEventListener('animationend', (e) => {
-				e.target.classList.remove('rainDrops');
-			});
-		</script>
+	<script type="text/javascript">
+		document.addEventListener('animationend', (e) => {
+			e.target.classList.remove('rainDrops');
+		});
+	</script>
 
-		<script type="text/javascript">
+	<script type="text/javascript">
 
-			/* CONTROL HANDLER */
-			function sliderChange(e, key) {
-				const newValue = parseInt(e.target.value)
+		/* CONTROL HANDLER */
+		function sliderChange(e, key) {
+			const newValue = parseInt(e.target.value)
 
-				// stop the currently running animation
-				window.cancelAnimationFrame(animationFrameRunner)
+			// stop the currently running animation
+			window.cancelAnimationFrame(animationFrameRunner)
 
-				// quick pause for dramatic effect...
-				setTimeout(() => {
-					// remove the DOM elements from the previous spiral
-					const spiral = document.getElementById('spiral')
-					while (spiral.firstChild) {
-						spiral.firstChild.remove()
-					}
+			// quick pause for dramatic effect...
+			setTimeout(() => {
+				// remove the DOM elements from the previous spiral
+				const spiral = document.getElementById('spiral')
+				while (spiral.firstChild) {
+					spiral.firstChild.remove()
+				}
 
-					// call run() again to redraw the spiral and start a new animation
-					const config = { [key]: newValue }
-					run(config)
-				}, 1000)
-			}
+				// call run() again to redraw the spiral and start a new animation
+				const config = { [key]: newValue }
+				run(config)
+			}, 1000)
+		}
 
-		</script>
+	</script>
 
-		<script type="text/javascript">
-		  /* INITIAL RUN WITH DEFAULT VALUES */
-			run()
-		</script>
+	<script type="text/javascript">
+	  /* INITIAL RUN WITH DEFAULT VALUES */
+		run()
+	</script>
 	</body>
 </html>
