@@ -1,10 +1,10 @@
 const run = (config) => {
   const settings = {
-    ...config,
     numCoils: 30,
     chord: 15,
     numGroups: 50,
     iterations: 80,
+    ...config,
   }
 
   const coils = drawCoils(settings.numCoils, settings.chord)
@@ -43,7 +43,7 @@ const run = (config) => {
         animationGroups = generateAnimationGroups(settings.numGroups, settings.iterations, spiralLength)
       }
     }
-    requestAnimationFrame(animate)
+    animationFrameRunner = requestAnimationFrame(animate)
   }
   animate()
 }
