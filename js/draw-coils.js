@@ -35,6 +35,7 @@ function drawCoils(numCoils, chord) {
 
     var container = document.createElement('p');
     container.style.position = 'absolute';
+    container.style.zIndex = "1";
     container.style.color = '#000831';
     container.style.fontFamily = 'JAP';
     container.style.left = x + halfX + 'px';
