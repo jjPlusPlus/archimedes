@@ -28,18 +28,11 @@
 			document.addEventListener('animationend', (e) => {
 				e.target.classList.remove('rainDrops');
 			});
+		</script>
 
-			const numCoils = 30
-		  const chord = 15
-			const numGroups = 50
-			const iterations = 80
-
-			const coils = drawCoils(numCoils, chord)
-			const spiralLength = document.getElementById('spiral').childElementCount
-
-			let animationGroups = generateAnimationGroups(numGroups, iterations, spiralLength)
-
-			run(animationGroups, iterations, numGroups, spiralLength)
+		<script type="text/javascript">
+		  /* INITIAL RUN WITH DEFAULTS */
+			run()
 		</script>
 	</body>
 </html>

@@ -1,4 +1,18 @@
-function run(animationGroups, iterations, numGroups, spiralLength) {
+const run = (config) => {
+  const settings = {
+    ...config,
+    numCoils: 30,
+    chord: 15,
+    numGroups: 50,
+    iterations: 80,
+  }
+
+  const coils = drawCoils(settings.numCoils, settings.chord)
+  const spiralLength = document.getElementById('spiral').childElementCount
+
+  let animationGroups = generateAnimationGroups(settings.numGroups, settings.iterations, spiralLength)
+
+  // helpers for running every n frames
   let totalIteration = 0
   let last = 0;
 
@@ -12,7 +26,7 @@ function run(animationGroups, iterations, numGroups, spiralLength) {
         const element = document.getElementById(elementID)
 
         // reset the iterations for this group if it's reached the length
-        group.iteration < iterations ? group.iteration += 1 : group.iteration = 0
+        group.iteration < settings.iterations ? group.iteration += 1 : group.iteration = 0
 
         // toggle the animation for this element
         element && element.classList.add('rainDrops')
@@ -22,12 +36,11 @@ function run(animationGroups, iterations, numGroups, spiralLength) {
       })
 
       // increase the total counter
-      if (totalIteration < iterations) {
+      if (totalIteration < settings.iterations) {
         totalIteration += 1
       } else {
-        console.log('resetting animation groups')
         totalIteration = 0
-        animationGroups = generateAnimationGroups(numGroups, iterations, spiralLength)
+        animationGroups = generateAnimationGroups(settings.numGroups, settings.iterations, spiralLength)
       }
     }
     requestAnimationFrame(animate)
