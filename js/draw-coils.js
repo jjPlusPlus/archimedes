@@ -32,7 +32,6 @@ function drawCoils(numCoils, chord) {
     // to a first approximation, the points are on a circle
     // so the angle between them is chord/radius
     j += chord / away;
-    console.log(awayStep);
 
     var container = document.createElement('p');
     container.style.position = 'absolute';
